@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 transition-colors duration-200 antialiased font-sans;
+  }
+
+  body.dark {
+    @apply bg-slate-950 text-slate-100;
+  }
+
+  /* Custom Scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-800 rounded-full hover:bg-slate-400 dark:hover:bg-slate-700;
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  @apply bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-white/20 dark:border-slate-800/40;
+}
+
+.glass-card {
+  @apply bg-white/50 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-100 dark:border-slate-800/50 shadow-glass-light dark:shadow-glass-dark hover:shadow-card-hover hover:border-slate-200 dark:hover:border-slate-700 transition-all duration-300;
+}
+
+/* Custom animations for drag and drop, load, and focus modes */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(124, 58, 237, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
+  }
+}
+
+.pulse-button {
+  animation: pulse-ring 2s infinite;
+}
+
+/* React Big Calendar Overrides */
+.rbc-calendar {
+  @apply font-sans text-sm border-none bg-white/50 dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl p-4 shadow-glass-light dark:shadow-glass-dark border border-slate-100 dark:border-slate-800/50 !important;
+}
+
+.rbc-header {
+  @apply py-3 text-slate-500 dark:text-slate-400 font-semibold border-b border-slate-100 dark:border-slate-800 !important;
+}
+
+.rbc-month-view, .rbc-time-view {
+  @apply border-none !important;
+}
+
+.rbc-day-bg {
+  @apply border-slate-100 dark:border-slate-800/50 !important;
+}
+
+.rbc-month-row {
+  @apply border-b border-slate-100 dark:border-slate-800/50 !important;
+}
+
+.rbc-event {
+  @apply bg-brand-500 text-white rounded-lg px-2 py-1 shadow-sm border-none hover:bg-brand-600 transition-colors duration-150 !important;
+}
+
+.rbc-off-range-bg {
+  @apply bg-slate-50/50 dark:bg-slate-950/20 !important;
+}
+
+.rbc-today {
+  @apply bg-brand-50/50 dark:bg-brand-950/10 !important;
+}
+
+/* Kanban column min-height styling */
+.kanban-column {
+  min-height: calc(100vh - 220px);
+}
